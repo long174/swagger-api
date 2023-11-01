@@ -4,9 +4,9 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Swagger UI</title>
-	<link rel="stylesheet" type="text/css" href="/q/swagger-ui/swagger-ui.css"/>
-	<link rel="icon" type="image/png" href="/q/swagger-ui/favicon-32x32.png" sizes="32x32"/>
-	<link rel="icon" type="image/png" href="/q/swagger-ui/favicon-16x16.png" sizes="16x16"/>
+	<link rel="stylesheet" type="text/css" href="q/swagger-ui/swagger-ui.css"/>
+	<link rel="icon" type="image/png" href="q/swagger-ui/favicon-32x32.png" sizes="32x32"/>
+	<link rel="icon" type="image/png" href="q/swagger-ui/favicon-16x16.png" sizes="16x16"/>
 	<style>
 		html {
 			box-sizing: border-box;
@@ -30,11 +30,11 @@
 <body>
 <div id="swagger-ui"></div>
 
-<script src="/q/swagger-ui/swagger-ui-bundle.js" charset="UTF-8"></script>
-<script src="/q/swagger-ui/swagger-ui-standalone-preset.js" charset="UTF-8"></script>
+<script src="q/swagger-ui/swagger-ui-bundle.js" charset="UTF-8"></script>
+<script src="q/swagger-ui/swagger-ui-standalone-preset.js" charset="UTF-8"></script>
 <script>
     window.onload = function () {
-        const servicesUrl = new URL("/q/services", window.location.href);
+        const servicesUrl = new URL("q/services", window.location.href);
         fetch(servicesUrl.toString())
             .then(response => response.json())
             .then(data => {
@@ -43,7 +43,7 @@
                     "kratos.api.Metadata",
                     "grpc.reflection.v1alpha.ServerReflection",
                 ].indexOf(x) === -1).map((x) => {
-                    const url = new URL("/q/service/" + x, window.location.href);
+                    const url = new URL("q/service/" + x, window.location.href);
                     return {url: url.toString(), name: x}
                 });
                 // Begin Swagger UI call region
