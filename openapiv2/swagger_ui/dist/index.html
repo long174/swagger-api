@@ -34,10 +34,10 @@
 <script src="./swagger-ui-standalone-preset.js" charset="UTF-8"></script>
 <script>
     window.onload = function () {
-		const pathName = window.location.pathName
-		const origin = window.location.origin
-		const servicesPath = pathName.replace("swagger-ui", "services")
-        const servicesUrl = origin.concat("/", servicesPath);
+		let pathName = window.location.pathname;
+		let origin = window.location.origin;
+		let servicesPath = pathName.replace("swagger-ui", "services");
+        let servicesUrl = origin.concat("/", servicesPath);
         fetch(servicesUrl)
             .then(response => response.json())
             .then(data => {
