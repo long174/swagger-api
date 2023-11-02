@@ -34,8 +34,11 @@
 <script src="./swagger-ui-standalone-preset.js" charset="UTF-8"></script>
 <script>
     window.onload = function () {
-        const servicesUrl = new URL("/services", window.location.href);
-        fetch(servicesUrl.toString())
+		const pathName = window.location.pathName
+		const origin = window.location.origin
+		const servicesPath = pathName.replace("swagger-ui", "services")
+        const servicesUrl = origin.concat("/", servicesPath);
+        fetch(servicesUrl)
             .then(response => response.json())
             .then(data => {
                 const urls = data.services.filter((x) => [
@@ -43,7 +46,7 @@
                     "kratos.api.Metadata",
                     "grpc.reflection.v1alpha.ServerReflection",
                 ].indexOf(x) === -1).map((x) => {
-                    const url = new URL("/service/" + x, window.location.href);
+                    const url = new URL("/service/" + x, servicesUrl);
                     return {url: url.toString(), name: x}
                 });
                 // Begin Swagger UI call region
