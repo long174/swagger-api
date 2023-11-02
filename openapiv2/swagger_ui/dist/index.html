@@ -46,8 +46,8 @@
                     "kratos.api.Metadata",
                     "grpc.reflection.v1alpha.ServerReflection",
                 ].indexOf(x) === -1).map((x) => {
-                    const url = new URL("/service/" + x, servicesUrl);
-                    return {url: url.toString(), name: x}
+                    const url = servicesPath.replace("services", "service/" + x);
+                    return {url: url, name: x}
                 });
                 // Begin Swagger UI call region
                 const ui = SwaggerUIBundle({
